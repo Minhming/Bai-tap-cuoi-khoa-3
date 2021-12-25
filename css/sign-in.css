@@ -13,6 +13,7 @@ body{
     flex-direction: row;
     width: 100%;
     margin-top: 5%;
+    font-size: 20px;
 }
 
 .sign-in{
@@ -27,7 +28,33 @@ body{
 }
 
 .sign-in h1{
-    margin-top: 25%;
+    margin-top: 20%;
+}
+
+.sign-in p{
+    color: #878a8b;
+}
+
+.sign-in .alternatives .icons{
+    color: #878a8b;
+}
+
+input{
+    height: 40px;
+    width: 320px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: #c0c0c0 0px 1px 1px 1px;    
+}
+
+a{
+    color: rgb(58, 58, 58);
+}
+
+.forgot{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .sign-up{
@@ -37,8 +64,19 @@ body{
     width: 25%;
     text-align: center;    
     border-radius: 1%;
-    box-shadow: rgba(0, 0, 0, 0.3) 1.4px 1.9px 6.6px;}
+    box-shadow: rgba(0, 0, 0, 0.3) 1.4px 1.9px 6.6px;
+}
 
 .sign-up h1{
-    margin-top: 50%;
+    margin-top: 45%;
+}
+
+button{
+    height: 50px;
+    width: 150px;
+    border-radius: 25px;
+    border: none;
+    background-color: rgb(75,112,226);
+    color: white;
+    font-size: 20px;
 }
