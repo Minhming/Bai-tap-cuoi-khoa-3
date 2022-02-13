@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
-    <link rel="stylesheet" href="../css/sign-in.css">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../css/sign-up.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
         <div class="form">
 
             <div class="sign-in">
-                <h1>Sign in to Website</h1>
+                <h1>Sign up to Website</h1>
 
                 <div class="alternatives">
                     <div class="icons">
@@ -24,34 +24,31 @@
                     </div>
                 </div>
 
-                <p>or use your email account</p>
-
-                <div class="">
+                <div class="box">
+                    <input type="text" id="username" name="username" placeholder="  Username">
+                    <br>
+                    <br>
                     <input type="text" id="email" name="email" placeholder="  Email">
                     <br>
                     <br>
                     <input type="password" id="password" name="password" placeholder="  Password">
                 </div>
 
-                <div class="forgot">
-                    <a href="#">Forgot your password ?</a>
-                </div>
-
-                <div>
-                    <button type="button" id="login" name="login">Sign in</button>
+                <div class="nut">
+                    <button type="button" id="signUp" name="signUp">Sign up</button>
                 </div>
             </div>
 
             <div class="sign-up">
-                <h1>Hello friend !</h1>
-                <p>Enter your personal details and start the jounery with us</p>
-                <a href="./sign-up.html"><button>Sign up</button></a>
+                <h1>Hi friend !</h1>
+                <p>Sign in if you got an account!</p>
+                <a href="./sign-in.html"><button>Sign in</button></a>
             </div>
 
         </div>
     </div>
 </body>
-<script src="../js/sign-in.js"></script>
+<script src="../js/sign-up.js"></script>
 <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
@@ -75,94 +72,94 @@
     };
   
     // Initialize Firebase
-    // const app = initializeApp(firebaseConfig);
-    // const analytics = getAnalytics(app);
-    // const database = getDatabase(app)
-    // const auth = getAuth();
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const database = getDatabase(app)
+    const auth = getAuth();
 
-//     signUp.addEventListener('click',(e) => {
+    signUp.addEventListener('click',(e) => {
 
-//     var email = document.getElementById('email').value;
-//     var username = document.getElementById('username').value;
-//     var password = document.getElementById('password').value;
-
-//     createUserWithEmailAndPassword(auth, email, password)
-//   .then((userCredential) => {
-//     // Signed in 
-//     const user = userCredential.user;
-
-//     set(ref(database, 'user/' + user.uid),{
-//         username: username,
-//         email: email,
-//         password: password
-//     })
-//     alert('Đã tạo người dùng!')
-//     window.location.href = "#";
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     // ..
-
-//     alert(errorMessage);
-//   });
-// });
-
-login.addEventListener('click',(e) => {
     var email = document.getElementById('email').value;
+    var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
 
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    const dt = new Date()
 
-    update(ref(database, 'user/' + user.uid),{
-        last_login: dt,
+    set(ref(database, 'user/' + user.uid),{
+        username: username,
+        email: email,
+        password: password
     })
+    alert('Đã tạo người dùng!')
+    window.location.href = "#";
     // ...
-    alert('Đã đăng nhập!')
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    // ..
 
     alert(errorMessage);
   });
-
-})
-const auth = getAuth();
-const user = auth,currentUser;
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
 });
 
-logout.addEventListener('click',(e) => {
+// signIn.addEventListener('click',(e) => {
+//     var email = document.getElementById('email').value;
+//     var password = document.getElementById('password').value;
+
+//     signInWithEmailAndPassword(auth, email, password)
+//   .then((userCredential) => {
+//     // Signed in 
+//     const user = userCredential.user;
+//     const dt = new Date()
+
+//     update(ref(database, 'user/' + user.uid),{
+//         last_login: dt,
+//     })
+//     // ...
+//     alert('Đã đăng nhập!')
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+
+//     alert(errorMessage);
+//   });
+
+// })
+// const auth = getAuth();
+// const user = auth,currentUser;
+
+// onAuthStateChanged(auth, (user) => {
+//   if (user) {
+//     // User is signed in, see docs for a list of available properties
+//     // https://firebase.google.com/docs/reference/js/firebase.User
+//     const uid = user.uid;
+//     // ...
+//   } else {
+//     // User is signed out
+//     // ...
+//   }
+// });
+
+// logout.addEventListener('click',(e) => {
     
-    signOut(auth).then(() => {
-        alert('Đã đăng xuất tài khoản!')
-  // Sign-out successful.
-}).catch((error) => {
-  // An error happened.
+//     signOut(auth).then(() => {
+//         alert('Đã đăng xuất tài khoản!')
+//   // Sign-out successful.
+// }).catch((error) => {
+//   // An error happened.
   
-  const errorCode = error.code;
-    const errorMessage = error.message;
+//   const errorCode = error.code;
+//     const errorMessage = error.message;
 
-    alert(errorMessage);
-});
+//     alert(errorMessage);
+// });
 
-} )
+// } )
 
   </script>
 </html>
